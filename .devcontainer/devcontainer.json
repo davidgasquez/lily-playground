@@ -1,0 +1,17 @@
+{
+	"name": "Launchpad",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"settings": {},
+	"extensions": [
+		"seatonjiang.gitmoji-vscode"
+	],
+	"remoteUser": "vscode",
+	"features": {
+		"docker-in-docker": "latest",
+		"git": "latest",
+		"golang": "latest",
+		"rust": "latest"
+	}
+}
