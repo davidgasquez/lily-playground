@@ -5,7 +5,8 @@
 	},
 	"settings": {},
 	"extensions": [
-		"seatonjiang.gitmoji-vscode"
+		"seatonjiang.gitmoji-vscode",
+		"bungcip.better-toml"
 	],
 	"remoteUser": "vscode",
 	"features": {
