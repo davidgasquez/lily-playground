@@ -9,7 +9,7 @@ curl -sI https://fil-chain-snapshots-fallback.s3.amazonaws.com/mainnet/minimal_f
 lily init --repo=.lily --config=config.toml  --import-snapshot minimal.car
 
 # Spawn daemon
-lily daemon
+lily daemon --repo=.lily --config=config.toml
 
 # Wait for sync
 lily sync wait
