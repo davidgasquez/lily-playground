@@ -6,7 +6,7 @@ curl -sI https://fil-chain-snapshots-fallback.s3.amazonaws.com/mainnet/minimal_f
     xargs wget
 
 # Initialize Lily
-lily init --repo=.lily --config=config.toml  --import-snapshot minimal.car
+lily init --repo=.lily --config=config.toml --import-snapshot minimal.car
 
 # Spawn daemon
 lily daemon --repo=.lily --config=config.toml
