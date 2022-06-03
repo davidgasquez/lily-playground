@@ -26,6 +26,8 @@ RUN export CGO_ENABLED=1 && make clean all
 
 FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu-22.04
 
+RUN apt-get update && apt-get install -y aria2
+
 # Install Lily
 COPY --from=builder /tmp/lily/lily /usr/bin/lily
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libOpenCL.so* /lib/
