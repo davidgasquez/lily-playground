@@ -1,7 +1,24 @@
 [Storage]
-[Storage.File]
-[Storage.File.CSV]
-Format = "CSV"
-Path = "/workspaces/lily-playground"
-OmitHeader = false
-FilePattern = "{table}.csv"
+    [Storage.File]
+        [Storage.File.CSV]
+            Format      = "CSV"
+            Path        = "/workspaces/lily-playground"
+            OmitHeader  = false
+            FilePattern = "{table}.csv"
+[Queue]
+    [Queue.Notifiers]
+        [Queue.Notifiers.Notifier1]
+            Addr = "localhost:6379"
+[Queue.Workers]
+    [Queue.Workers.Worker1]
+        [Queue.Workers.Worker1.RedisConfig]
+            Addr = "localhost:6379"
+        [Queue.Workers.Worker1.WorkerConfig]
+            Concurrency        = 1
+            LoggerLevel        = "debug"
+            WatchQueuePriority = 5
+            FillQueuePriority  = 3
+            IndexQueuePriority = 1
+            WalkQueuePriority  = 1
+            StrictPriority     = false
+            ShutdownTimeout    = 30000000000

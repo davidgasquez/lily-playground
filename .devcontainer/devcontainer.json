@@ -1,12 +1,11 @@
 {
     "name": "Launchpad",
-    "build": {
-        "dockerfile": "Dockerfile"
-    },
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "lily",
+    "workspaceFolder": "/workspace",
     "settings": {},
     "extensions": [
-        "seatonjiang.gitmoji-vscode",
-        "bungcip.better-toml"
+        "seatonjiang.gitmoji-vscode"
     ],
     "remoteUser": "vscode",
     "features": {
