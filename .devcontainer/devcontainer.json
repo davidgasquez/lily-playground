@@ -1,5 +1,5 @@
 {
-    "name": "Launchpad",
+    "name": "Lily Playground",
     "dockerComposeFile": "docker-compose.yml",
     "service": "lily",
     "workspaceFolder": "/workspace",

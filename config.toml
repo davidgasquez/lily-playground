@@ -8,11 +8,15 @@
 [Queue]
     [Queue.Notifiers]
         [Queue.Notifiers.Notifier1]
-            Addr = "localhost:6379"
+            Network  = "tcp"
+            Addr     = "redis:6379"
+            Username = "default"
+            DB       = 0
+            PoolSize = 0
 [Queue.Workers]
     [Queue.Workers.Worker1]
         [Queue.Workers.Worker1.RedisConfig]
-            Addr = "localhost:6379"
+            Addr = "redis:6379"
         [Queue.Workers.Worker1.WorkerConfig]
             Concurrency        = 1
             LoggerLevel        = "debug"
