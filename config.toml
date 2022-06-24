@@ -2,7 +2,7 @@
     [Storage.File]
         [Storage.File.CSV]
             Format      = "CSV"
-            Path        = "/workspaces/lily-playground"
+            Path        = "/workspaces/"
             OmitHeader  = false
             FilePattern = "{table}.csv"
 [Queue]
