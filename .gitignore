@@ -13,6 +13,7 @@
 
 # Snapshots
 *.car
+*.car.aria2
 *.sha256sum
 
 # Lily repository
