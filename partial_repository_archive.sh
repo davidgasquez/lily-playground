@@ -18,7 +18,7 @@ echo "Downloading $SNAPSHOT_URL"
 aria2c -x16 $SNAPSHOT_URL
 
 # Initialize repository
-# lily init --repo=.lily --config=config.toml --import-snapshot minimal_finality_stateroots_1803120_2022-05-13_00-00-00.car
+lily init --repo=.lily --config=config.toml --import-snapshot minimal_finality_stateroots_${FROM_EPOCH}_${FROM_DATE}_00-00-00.car
 
 # Spawn daemon
-# lily daemon --repo=.lily --config=config.toml 2>&1 | tee -a lily.log
+lily daemon --repo=.lily --config=config.toml 2>&1 | tee -a lily.log
