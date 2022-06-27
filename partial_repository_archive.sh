@@ -22,3 +22,8 @@ lily init --repo=.lily --config=config.toml --import-snapshot minimal_finality_s
 
 # Spawn daemon
 lily daemon --repo=.lily --config=config.toml 2>&1 | tee -a lily.log
+
+# Walk the chain
+lily job run --tasks=consensus walk --from 1803120 --to 1803132
+
+# Publish repository archive to S3
