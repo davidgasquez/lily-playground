@@ -18,10 +18,14 @@ RUN wget "https://static.rust-lang.org/rustup/dist/x86_64-unknown-linux-gnu/rust
     cargo --version; \
     rustc --version;
 
+# Build Lily Shed
+RUN git clone https://github.com/kasteph/lily-shed.git /tmp/lily-shed
+WORKDIR /tmp/lily-shed
+RUN go build
+
+# Build Lily
 RUN git clone https://github.com/filecoin-project/lily /tmp/lily
-
 WORKDIR /tmp/lily
-
 RUN export CGO_ENABLED=1 && make clean all
 
 FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu-22.04
@@ -30,6 +34,7 @@ RUN apt-get update && apt-get install -y aria2
 
 # Install Lily
 COPY --from=builder /tmp/lily/lily /usr/bin/lily
+COPY --from=builder /tmp/lily-shed/lily-shed /usr/bin/lily-shed
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libOpenCL.so* /lib/
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libhwloc.so* /lib/
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libnuma.so* /lib/
