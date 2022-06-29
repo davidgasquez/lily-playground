@@ -7,3 +7,6 @@ init:
 
 daemon:
 	@lily daemon --repo=.lily --config=config.toml
+
+clean:
+	@rm -rf .lily/ *.car
