@@ -24,13 +24,14 @@ WORKDIR /tmp/lily-shed
 RUN go build
 
 # Build Lily
-RUN git clone https://github.com/filecoin-project/lily /tmp/lily
+RUN git clone --branch v0.10.1 https://github.com/filecoin-project/lily /tmp/lily
 WORKDIR /tmp/lily
 RUN export CGO_ENABLED=1 && make clean all
 
 FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu-22.04
 
-RUN apt-get update && apt-get install -y aria2
+# Install aria2 to download snapshots
+RUN apt-get update && apt-get install -y aria2 redis-server
 
 # Install Lily
 COPY --from=builder /tmp/lily/lily /usr/bin/lily

@@ -12,6 +12,9 @@ lily daemon --repo=.lily --config=config.toml
 # Wait for sync
 lily sync wait
 
+# Initialize TimescaleDB
+lily migrate --db="postgres://postgres:password@timescaledb:5432/postgres?sslmode=disable" --latest --schema postgres --name lily
+
 # Run a walk job
 lily job run --storage=CSV --window=30s --tasks="blocks" walk --from=1841000 --to=1841040 notify --queue="Notifier1"
 

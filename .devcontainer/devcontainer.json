@@ -3,9 +3,28 @@
     "dockerComposeFile": "docker-compose.yml",
     "service": "lily",
     "workspaceFolder": "/workspace",
-    "settings": {},
+    "settings": {
+        "evenBetterToml.formatter.indentTables": true,
+        "evenBetterToml.formatter.indentEntries": true,
+        "evenBetterToml.formatter.indentMultilineStrings": true,
+        "sqltools.connections": [
+            {
+                "previewLimit": 50,
+                "server": "timescaledb",
+                "port": 5432,
+                "driver": "PostgreSQL",
+                "name": "TimescaleDB",
+                "database": "postgres",
+                "username": "postgres",
+                "password": "password"
+            }
+        ]
+    },
     "extensions": [
-        "seatonjiang.gitmoji-vscode"
+        "seatonjiang.gitmoji-vscode",
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-pg",
+        "tamasfe.even-better-toml"
     ],
     "remoteUser": "vscode",
     "features": {
