@@ -13,15 +13,15 @@ TO_EPOCH=$(lily-shed convert -s date $2_00-00-00)
 echo "Creating partial repository archive from ${FROM_EPOCH} to ${TO_EPOCH}"
 
 # Download chain snapshot
-SNAPSHOT_URL="https://fil-chain-snapshots-fallback.s3.amazonaws.com/mainnet/minimal_finality_stateroots_${FROM_EPOCH}_${FROM_DATE}_02-00-00.car"
-echo "Downloading snapshot from ${1}_00-00-00"
-lily-shed snapshot ${1}_00-00-00
+SNAPSHOT_URL="https://fil-chain-snapshots-fallback.s3.amazonaws.com/mainnet/minimal_finality_stateroots_${FROM_EPOCH}_${FROM_DATE}_00-00-00.car"
+echo "Downloading snapshot from ${SNAPSHOT_URL}"
+aria2c -x16 ${SNAPSHOT_URL} # Alternatively, use lily-shed snapshot ${1}_00-00-00
 
 # Initialize repository
 lily init --repo=.lily --config=config.toml --import-snapshot minimal_finality_stateroots_*.car
 
 # Spawn daemon
-lily daemon --repo=.lily --config=config.toml 2>&1 | tee -a lily.log
+lily daemon --repo=.lily --config=config.toml
 
 # Walk the chain
-lily job run --tasks=consensus walk --from ${FROM_EPOCH} --to ${TO_EPOCH}
+lily job run --storage="Timescale" --tasks=consensus walk --from 1955215 --to 1955415

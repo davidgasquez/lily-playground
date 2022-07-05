@@ -18,3 +18,5 @@
 
 # Lily repository
 .lily
+.redis
+.timescaledb
