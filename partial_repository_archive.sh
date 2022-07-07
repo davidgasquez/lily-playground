@@ -24,4 +24,4 @@ lily init --repo=.lily --config=config.toml --import-snapshot minimal_finality_s
 lily daemon --repo=.lily --config=config.toml
 
 # Walk the chain
-lily job run --storage="Timescale" --tasks=consensus walk --from 1955215 --to 1955415
+lily job run --storage="Timescale" --tasks=consensus walk --from 1962190 --to 1962194

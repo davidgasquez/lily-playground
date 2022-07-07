@@ -24,7 +24,7 @@ WORKDIR /tmp/lily-shed
 RUN go build
 
 # Build Lily
-RUN git clone --branch v0.10.1 https://github.com/filecoin-project/lily /tmp/lily
+RUN git clone --branch v0.11.0 https://github.com/filecoin-project/lily /tmp/lily
 WORKDIR /tmp/lily
 RUN export CGO_ENABLED=1 && make clean all
 

@@ -15,8 +15,11 @@ lily sync wait
 # Initialize TimescaleDB
 lily migrate --db="postgres://postgres:password@timescaledb:5432/postgres?sslmode=disable" --latest --schema postgres --name lily
 
-# Run a walk job
-lily job run --storage=CSV --window=30s --tasks="blocks" walk --from=1841000 --to=1841040 notify --queue="Notifier1"
+# Notify a walk job
+lily job run --storage="Timescale" --window=30s --tasks="blocks" walk --from=1961761 --to=1961780 notify --queue="Notifier1"
 
-# Run a watch job
+# Run the notified walk job
+lily job run --storage="Timescale" tipset-worker --queue="Worker1"
+
+# Run a watch job and save to CSV
 lily job run --storage=CSV --window=30s --tasks="blocks" watch --confidence=100

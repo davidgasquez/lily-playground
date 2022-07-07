@@ -10,21 +10,11 @@ services:
     redis:
         image: redis:latest
         command: redis-server --appendonly yes
-        volumes:
-            - ../.redis:/data
         ports:
             - 6379:6379
     timescaledb:
-        container_name: timescaledb
         image: timescale/timescaledb:2.5.0-pg13
         ports:
             - 5432:5432
         environment:
             - POSTGRES_PASSWORD=password
-        volumes:
-            - ../.timescaledb:/var/lib/postgresql
-        # healthcheck:
-        #     test: [ "CMD-SHELL", "pg_isready -U postgres" ]
-        #     interval: 10s
-        #     timeout: 5s
-        #     retries: 5
