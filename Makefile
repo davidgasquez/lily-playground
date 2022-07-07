@@ -10,3 +10,4 @@ daemon:
 
 clean:
 	@rm -rf .lily/ *.car
+	@sudo rm -rf .redis .timescaledb
