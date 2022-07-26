@@ -23,5 +23,15 @@ lily init --repo=.lily --config=config.toml --import-snapshot minimal_finality_s
 # Spawn daemon
 lily daemon --repo=.lily --config=config.toml
 
+# Wait for full chain to be synced
+lily sync wait
+
 # Walk the chain
-lily job run --storage="Timescale" --tasks=consensus walk --from 1962190 --to 1962194
+lily job run --storage=CSV --tasks=consensus walk --from $FROM_EPOCH --to $TO_EPOCH
+
+# Stop the daemon
+lily stop
+
+# Archive the repository to S3
+rclone copy --s3-acl=bucket-owner-full-control --progress .lily/config.toml "s3:${S3_PATH}/partial-${FROM_EPOCH}-${TO_EPOCH}/"
+rclone copy --s3-acl=bucket-owner-full-control --progress .lily/mainnet/datastore "s3:${S3_PATH}/partial-${FROM_EPOCH}-${TO_EPOCH}/datastore"
