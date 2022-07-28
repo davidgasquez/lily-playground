@@ -13,13 +13,8 @@ TO_EPOCH=$(lily-shed convert -s date $2_00-00-00)
 
 echo "Creating partial repository archive from ${FROM_EPOCH} to ${TO_EPOCH}"
 
-# Download chain snapshot
+# Download closest chain snapshot
 lily-shed snapshot ${1}_00-00-00
-
-# Or do it manually
-# SNAPSHOT_URL="https://fil-chain-snapshots-fallback.s3.amazonaws.com/mainnet/minimal_finality_stateroots_${FROM_EPOCH}_${FROM_DATE}_00-00-00.car"
-# echo "Downloading snapshot from ${SNAPSHOT_URL}"
-# aria2c -x16 ${SNAPSHOT_URL}
 
 # Initialize repository
 lily init --repo=.lily --config=config.toml --import-snapshot minimal_finality_stateroots_*.car
