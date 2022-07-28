@@ -21,5 +21,8 @@ lily job run --storage="Timescale" --window=30s --tasks="blocks" walk --from=196
 # Run the notified walk job
 lily job run --storage="Timescale" tipset-worker --queue="Worker1"
 
+# Run a walk job and save to CSV
+lily job run --storage=CSV --tasks="internal_messages" walk --from=2023400 --to=2023450
+
 # Run a watch job and save to CSV
 lily job run --storage=CSV --window=30s --tasks="blocks" watch --confidence=100
