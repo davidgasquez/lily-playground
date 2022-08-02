@@ -22,6 +22,7 @@ lily init --repo=.lily --config=config.toml --import-snapshot minimal_finality_s
 # Spawn daemon
 lily daemon --repo=.lily --config=config.toml &
 
+# Sleep for a bit to let the daemon start
 sleep 15
 
 # Wait for full chain to be synced
