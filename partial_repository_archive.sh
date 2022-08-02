@@ -14,13 +14,15 @@ TO_EPOCH=$(lily-shed convert -s date $2_00-00-00)
 echo "Creating partial repository archive from ${FROM_EPOCH} to ${TO_EPOCH}"
 
 # Download closest chain snapshot
-lily-shed snapshot ${1}_00-00-00
+lily-shed snapshot -m 24 ${1}_00-00-00
 
 # Initialize repository
 lily init --repo=.lily --config=config.toml --import-snapshot minimal_finality_stateroots_*.car
 
 # Spawn daemon
 lily daemon --repo=.lily --config=config.toml &
+
+sleep 15
 
 # Wait for full chain to be synced
 lily sync wait
