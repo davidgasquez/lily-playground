@@ -41,7 +41,9 @@ COPY --from=builder /usr/lib/x86_64-linux-gnu/libhwloc.so* /lib/
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libnuma.so* /lib/
 COPY --from=builder /usr/lib/x86_64-linux-gnu/libltdl.so* /lib/
 
+# Copy files
 COPY config.toml /workspace/config.toml
-COPY partial_repository_archive.sh /workspace/partial_repository_archive.sh
+COPY scripts/ /workspace/scripts
 
+# Set working directory
 WORKDIR /workspace
